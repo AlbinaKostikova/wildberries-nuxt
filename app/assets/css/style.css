@@ -93,11 +93,11 @@ button {
 }
 
 .slide-1 {
-    background: #B4D1E0 url('../img/slide-image-1.png') no-repeat top right 30%;
+    background: #B4D1E0 url('/images/slide-image-1.png') no-repeat top right 30%;
 }
 
 .slide-2 {
-    background: #b9e0b4 url('../img/slide-image-1.png') no-repeat top right 30%;
+    background: #b9e0b4 url('/images/slide-image-1.png') no-repeat top right 30%;
 }
 
 .label {
@@ -155,18 +155,18 @@ button {
 }
 
 .card-1 {
-    background: #E3E2E3 url('../img/card-image-1.jpg') no-repeat top right;
+    background: #E3E2E3 url('/images/card-image-1.jpg') no-repeat top right;
     background-size: cover;
 }
 
 .card-2 {
-    background: #000 url('../img/card-image-2.jpg') no-repeat top right;
+    background: #000 url('/images/card-image-2.jpg') no-repeat top right;
     background-size: cover;
 }
 
 .card-3 {
     padding-top: 35px;
-    background: #CCD5E6 url('../img/card-image-3.png') no-repeat top right 10%;
+    background: #CCD5E6 url('/images/card-image-3.png') no-repeat top right 10%;
     background-size: contain;
 }
 
@@ -176,7 +176,7 @@ button {
     align-items: flex-start;
     padding-top: 35px;
     padding-left: 25px;
-    background: #FF4F52 url('../img/card-image-4.png') no-repeat top right;
+    background: #FF4F52 url('/images/card-image-4.png') no-repeat top right;
     background-size: contain;
 }
 
