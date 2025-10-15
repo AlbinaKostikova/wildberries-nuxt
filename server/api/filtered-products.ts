@@ -6,7 +6,15 @@ export interface Query {
 }
 const getFilteredProducts = (products: Product[], query: Query) => {
   if (query.field && query.name) {
-    return products.filter(c => c[query.field] === query.name)
+    return products.filter(c => {
+      const key = c[query.field]
+
+      if (typeof key === 'string') {
+        return key.toLowerCase() === query.name.toLowerCase()
+      } else {
+        return c[query.field] === query.name
+      }
+      })
   } else {
     return products
   }
