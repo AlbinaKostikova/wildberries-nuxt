@@ -1,4 +1,4 @@
-<<template>
+<template>
   <header class="container header px-4 px-md-0">
     <div class="row justify-content-between align-items-center">
       <div class="col-lg-2 col-6">
@@ -19,9 +19,9 @@
       </div>
       <div class="col-lg-2 d-none d-lg-block">
         <div class="form-control search-block">
-          <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username"
-            aria-describedby="button-addon2" />
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+          <input v-model="searchQuery" type="text" class="form-control" placeholder="Search"
+            aria-label="Search products" @keyup.enter="handleSearch()" />
+          <button class="btn btn-outline-secondary" type="button" @click="handleSearch()">
             <img src="/images/search.png" alt="search" />
           </button>
         </div>
@@ -34,22 +34,36 @@
         </button>
       </div>
     </div>
-    <!-- /.row -->
   </header>
 </template>
 
-  <script setup>
-  const viewCart = useViewCart()
-  let links = ref([
-    { id: 0, route: { path: '/products', query: { field: 'gender', name: 'Womens' } }, text: 'Womens' },
-    { id: 1, route: { path: '/products', query: { field: 'gender', name: 'Mens' } }, text: 'Mens' },
-    { id: 2, route: { path: '/products', query: { field: 'category', name: 'Clothing' } }, text: 'Clothing' },
-    { id: 3, route: { path: '/products', query: { field: 'category', name: 'Accessories' } }, text: 'Accessories' },
-    { id: 4, route: { path: '/products', query: { field: 'category', name: 'Shoes' } }, text: 'Shoes' },
-    { id: 5, route: { path: '/products' }, text: 'All' },
-  ])
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-  const openCart = () => {
-    viewCart.value = true
+const router = useRouter()
+const viewCart = useViewCart()
+const searchQuery = ref('')
+
+let links = ref([
+  { id: 0, route: { path: '/products', query: { field: 'gender', name: 'Womens' } }, text: 'Womens' },
+  { id: 1, route: { path: '/products', query: { field: 'gender', name: 'Mens' } }, text: 'Mens' },
+  { id: 2, route: { path: '/products', query: { field: 'category', name: 'Clothing' } }, text: 'Clothing' },
+  { id: 3, route: { path: '/products', query: { field: 'category', name: 'Accessories' } }, text: 'Accessories' },
+  { id: 4, route: { path: '/products', query: { field: 'category', name: 'Shoes' } }, text: 'Shoes' },
+  { id: 5, route: { path: '/products' }, text: 'All' },
+])
+
+const handleSearch = () => {
+  if (searchQuery.value.trim()) {
+    router.push({
+      path: '/products',
+      query: { search: searchQuery.value }
+    })
   }
+}
+
+const openCart = () => {
+  viewCart.value = true
+}
 </script>

@@ -9,7 +9,7 @@
       <div class="row long-goods-list">
         <div class="col-lg-3 col-sm-6" v-for="card in data" :key="card.id">
           <div class="goods-card">
-            <span class="label" v-if="card.label" >{{ titleFormat(card.label) }}</span>
+            <span class="label" v-if="card.label">{{ titleFormat(card.label) }}</span>
             <img :src="card.img" alt="image: Hoodie" class="goods-image" />
             <h3 class="goods-title">{{ card.name }}</h3>
             <p class="goods-description">{{ card.description }}</p>
@@ -24,21 +24,26 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { CartItem } from '~/models/cart-item.model'
 import type { Product } from '~/models/products.model'
 
 const route = useRoute()
 const field = computed(() => route.query.field || '')
 const name = computed(() => route.query.name || '')
+const search = computed(() => route.query.search || '')
 const cartItems = useCart()
 
 const { data } = await useAsyncData('filtered-products', () => {
+  if (search.value) {
+    return $fetch(`/api/filtered-products?search=${search.value}`)
+  }
   return $fetch(`/api/filtered-products?field=${field.value}&name=${name.value}`)
-}, { watch: [field, name]})
+}, { watch: [field, name, search] })
 
 
 
-const addToCart = (product:  Product) => {
+const addToCart = (product: Product) => {
   const findItem = cartItems.value.find(c => c.id === product.id)
 
   if (findItem) {

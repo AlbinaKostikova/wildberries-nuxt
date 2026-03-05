@@ -1,4 +1,4 @@
-<<template>
+<template>
   <div class="overlay" :class="{ 'show': viewCart }" id="modal-cart">
     <div class="modal">
       <header class="modal-header">
@@ -25,11 +25,9 @@
         </thead>
         <tbody class="cart-table__goods">
 
-          <!-- Новое -->
           <tr v-if="cart.length === 0">
             <td colspan="7" class="empty-cart-message">Корзина пуста</td>
           </tr>
-          <!-- Новое -->
 
           <tr class="card-item" v-for="item in cart" :key="item.id">
             <td>{{ item.name }}</td>
@@ -49,7 +47,7 @@
         </tbody>
         <tfoot v-if="cart.length > 0">
           <tr>
-            <th colspan=" 5">Total:</th>
+            <th colspan="5">Total:</th>
             <th class="card-table__total" colspan="2">{{ total }}$</th>
           </tr>
         </tfoot>
@@ -67,6 +65,7 @@
 
   <script setup lang="ts">
   import type { CartItem } from '~/models/cart-item.model'
+  import { computed } from 'vue'
 
   const viewCart = useViewCart()
   const cart = useCart()
@@ -80,29 +79,17 @@
 
   const increase = (item: CartItem) => {
     const findItem = cart.value.find(c => c.id === item.id)
-    if (findItem.id) {
+    if (findItem) {
       findItem.count++
     }
   }
   const decrease = (item: CartItem) => {
     const findItem = cart.value.find(c => c.id === item.id)
-    if (findItem.id) {
+    if (findItem) {
       findItem.count--
     }
   }
   const remove = (item: CartItem) => {
-    const findItem = cart.value.find(c => c.id === item.id)
-    if (findItem.id) {
-      cart.value = cart.value.filter(c => c.id !== item.id)
-    }
+    cart.value = cart.value.filter(c => c.id !== item.id)
   }
 </script>
-  <style scoped>
-  .empty-cart-message {
-    text-align: center;
-    padding: 2rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #555;
-  }
-</style>

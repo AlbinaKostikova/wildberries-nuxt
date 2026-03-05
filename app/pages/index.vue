@@ -62,7 +62,6 @@
         <!-- /.container -->
       </section>
     </div>
-    <!-- /.swiper-wrapper -->
     <div class="slider-nav">
       <div class="container">
         <div class="row justify-content-between">
@@ -71,21 +70,15 @@
               <img src="/images/arrow-prev.svg" alt="icon: arrow-prev" />
             </button>
           </div>
-          <!-- /.col-1 -->
           <div class="col-1">
             <button class="slider-button slider-button-next">
               <img src="/images/arrow-next.svg" alt="icon: arrow-prev" />
             </button>
           </div>
-          <!-- /.col-1 -->
         </div>
-        <!-- /.row -->
       </div>
-      <!-- /.container -->
     </div>
-    <!-- /.slider-nav -->
   </section>
-  <!-- /.slider -->
   <section class="special-offers container pt-5 pb-4">
     <div class="row mb-4">
       <div class="col-xl-6">
@@ -97,9 +90,7 @@
             <img src="/images/arrow.svg" alt="icon: arrow" class="button-icon" />
           </button>
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col-6 -->
       <div class="col-xl-6">
         <div class="card card-2 mb-4">
           <h3 class="card-title text-light">Catch the Sun: Spring Break Styles From $5.99</h3>
@@ -109,9 +100,7 @@
             <img src="/images/arrow.svg" alt="icon: arrow" class="button-icon" />
           </button>
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col-6 -->
       <div class="col-xl-9 col-lg-6 mb-4">
         <div class="card card-3">
           <span class="label">Bestseller</span>
@@ -122,9 +111,7 @@
             <span class="button-text">Shop now</span>
           </button>
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col-9 -->
       <div class="col-xl-3 col-lg-6">
         <div class="card card-4">
           <h3 class="card-title text-light mw-160">Printed Shirt with a Bow</h3>
@@ -134,24 +121,19 @@
             <span class="button-text">Shop now</span>
           </button>
         </div>
-        <!-- /.card -->
       </div>
-      <!-- /.col-3 -->
     </div>
-    <!-- /.row -->
     <div class="row align-items-center mb-4">
       <div class="col-9">
         <h2 class="section-title">New Arrival</h2>
       </div>
-      <!-- /.col-9 -->
+
       <div class="col-3 d-flex justify-content-end">
         <NuxtLink :to="{ path: '/products', query: { field: 'label', name: 'New' } }" class="more">
           View All
         </NuxtLink>
       </div>
-      <!-- /.col-3 -->
     </div>
-    <!-- /.row -->
     <div class="short-goods row">
       <div class="col-lg-3 col-sm-6" v-for="card in data" :key="card">
         <div class="goods-card">
